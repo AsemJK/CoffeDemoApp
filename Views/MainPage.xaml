@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:vm="clr-namespace:CoffeDemoApp.ViewModels"
+			 x:Class="CoffeDemoApp.Views.MainPage"
+			 x:DataType="vm:MainViewModel"
+             BackgroundColor="{StaticResource BgMain}">
+    <Grid Margin="15" RowDefinitions=".4*,.1*,.1*,.4*">
+        <Border 
+            Grid.RowSpan="2"
+            Stroke="{StaticResource BgGray}">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="15"></RoundRectangle>
+            </Border.StrokeShape>
+            <Image Source="cupcoffe.jpg" 
+                   BackgroundColor="AliceBlue" 
+                   Aspect="AspectFill" />
+        </Border>
+        <Grid RowDefinitions="*" ColumnDefinitions="*,*">
+            <Border 
+                Stroke="{StaticResource BgLightGray}"
+                Margin="25,15,2,0"
+                BackgroundColor="{StaticResource BgLightGray}"
+                WidthRequest="50"
+                HeightRequest="50"
+                VerticalOptions="Start"
+                HorizontalOptions="Start">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="15,0,0,15"/>
+                </Border.StrokeShape>
+                <Label FontFamily="FontAwesome4" 
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center" 
+                       Text="&#xf053;"/>
+            </Border>
+            <Border 
+                Stroke="{StaticResource BgLightGray}"
+                Grid.Column="1"
+                Margin="0,15,25,0"
+                BackgroundColor="{StaticResource BgLightGray}"
+                WidthRequest="50"
+                HeightRequest="50"
+                VerticalOptions="Start"
+                HorizontalOptions="End">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="0,15,15,0"/>
+                </Border.StrokeShape>
+                <Label FontFamily="FontAwesome4" 
+           VerticalOptions="Center" 
+           HorizontalOptions="Center" 
+           Text="&#xf08a;"/>
+            </Border>
+        </Grid>
+        <Border
+            Grid.Row="1"
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="2"
+            Stroke="{StaticResource BgGray}">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="30" />
+            </Border.StrokeShape>
+
+            <Grid 
+                RowDefinitions="*,*,*"
+                ColumnDefinitions=".5*,.25*,.25*"
+                BackgroundColor="{StaticResource BgGray}"
+                Padding="20">
+                <Label FontAttributes="Bold"
+                       Grid.ColumnSpan="2"
+                       FontSize="20"
+                       TextColor="White"
+                       Text="Expresso"/>
+                <Label FontAttributes="Bold"
+                        Grid.Column="2"
+                        FontSize="16"
+                        TextColor="Orange"
+                        Text="$20"
+                       HorizontalOptions="Center"/>
+                <Label FontAttributes="None"
+                       Grid.Row="1"
+                       Grid.ColumnSpan="2"
+                       FontSize="12"
+                       TextColor="White"
+                       Text="Taste and Enjoy"/>
+                <HorizontalStackLayout Grid.Row="2" Spacing="10">
+                    <Label FontFamily="FontAwesome4" VerticalOptions="Center" TextColor="{StaticResource Yellow100Accent}" Text="&#xf005;"></Label>
+                    <Label FontFamily="FontAwesome4" VerticalOptions="Center" TextColor="{StaticResource White}" Text="4"></Label>
+                    <Label FontFamily="FontAwesome4" VerticalOptions="Center" TextColor="{StaticResource White}" Text="(4,455)"></Label>                    
+                </HorizontalStackLayout>
+                <Button 
+                    TextColor="White" 
+                    Grid.Row="2" 
+                    Grid.Column="1" 
+                    Grid.ColumnSpan="2" 
+                    HeightRequest="35" 
+                    BackgroundColor="{StaticResource Brown}" 
+                    Text="Add To Cart"
+                    Padding="0"/>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="3" RowDefinitions=".4*,.4*,.2*">
+            <VerticalStackLayout Margin="20,2">
+                <Label Text="Description" FontSize="16" TextColor="WhiteSmoke" />
+                <Label FontSize="14" LineHeight="1.0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span TextColor="{StaticResource TxtGray}" Text="Espresso is not a type of coffee bean or a roasting style – a common misconception.This is then topped with a crema" />
+                            <Span Text="...Read More" TextColor="Orange"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>                
+            </VerticalStackLayout>
+            <VerticalStackLayout 
+                Grid.Row="1" 
+                Margin="20,6,0,0" Spacing="10">
+                <Label Text="Size" FontAttributes="Bold" TextColor="White"/>
+                <HorizontalStackLayout RadioButtonGroup.GroupName="SizeOptions"
+                                       Spacing="10"
+                                       VerticalOptions="Center">
+                    <BindableLayout.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Small</x:String>
+                            <x:String>Medium</x:String>
+                            <x:String>Larg</x:String>
+                        </x:Array>
+                    </BindableLayout.ItemsSource>
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <RadioButton Content="{Binding .}">
+                                <RadioButton.ControlTemplate>
+                                    <ControlTemplate>
+                                        <Grid ColumnSpacing="10">
+                                            <Border x:Name="Container"
+                                                    Stroke="{StaticResource BgGray}" 
+                                                    WidthRequest="100"
+                                                    HeightRequest="35">
+                                                <Border.StrokeShape>
+                                                    <RoundRectangle CornerRadius="10" />
+                                                </Border.StrokeShape>
+                                                <Label
+                                                    Margin="20,5"
+                                                    Text="{TemplateBinding Content}" 
+                                                       TextColor="Black"
+                                                       HeightRequest="35"
+                                                       VerticalOptions="Center"
+                                                       HorizontalOptions="Center"/>
+                                               
+
+                                            </Border>
+                                            <VisualStateManager.VisualStateGroups>
+                                                <VisualStateGroupList>
+                                                    <VisualStateGroup x:Name="CheckedStates">
+                                                        <VisualState x:Name="Checked">
+                                                            <VisualState.Setters>
+                                                                <Setter TargetName="TextLabel" Property="Label.TextColor" Value="Brown" />
+                                                                <Setter TargetName="Container" Property="Border.BackgroundColor" Value="Silver" />
+                                                                <Setter TargetName="Container" Property="Border.Stroke" Value="Black" />
+                                                            </VisualState.Setters>
+                                                        </VisualState>
+                                                        <VisualState x:Name="Unchecked">
+                                                            <VisualState.Setters>
+                                                                <Setter TargetName="TextLabel" Property="Label.TextColor" Value="Silver" />
+                                                                <Setter TargetName="Container" Property="Border.BackgroundColor" Value="White" />
+                                                                <Setter TargetName="Container" Property="Border.Stroke" Value="Black" />
+                                                            </VisualState.Setters>
+                                                        </VisualState>
+                                                    </VisualStateGroup>
+                                                </VisualStateGroupList>
+                                            </VisualStateManager.VisualStateGroups>
+                                        </Grid>
+                                       
+                                    </ControlTemplate>                                    
+                                </RadioButton.ControlTemplate>
+                            </RadioButton>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+            <Button Grid.Row="4" Text="Buy Now"
+                    BackgroundColor="{StaticResource Brown}"/>
+        </Grid>
+    </Grid>
+</ContentPage>
